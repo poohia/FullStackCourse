@@ -1,0 +1,142 @@
+// La façon d'écrire les variables en CSS
+// :root permet d'accéder aux variables dans toutes l'application
+// Pour utiliser une fonction il faut faire appel à la fonction var `var(--primary-color)`
+// CSS Variables: https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #ff6b6b;
+  --tertiary-color: #ecf0f1;
+  --border-raidus-effect: 10px 0 10px 0;
+  --border-radius-effect-inverse: 0 10px 0 10px;
+  --shadow-effect: 5px 2px 14px -1px #bdc3c7;
+}
+
+body {
+  background-color: var(--tertiary-color);
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app--content {
+  padding: 20px;
+  background-color: white;
+  border-radius: var(--border-raidus-effect);
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: var(--shadow-effect);
+  box-shadow: var(--shadow-effect);
+  min-width: 1500px;
+  min-height: 500px;
+  .app--content-title {
+    text-align: center;
+    h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin: 0;
+    }
+  }
+}
+.app--content-form {
+  display: flex;
+  justify-content: center;
+  form {
+    display: flex;
+    .app--content-form-field {
+      margin-right: 5px;
+      align-self: center;
+      input {
+        min-width: 300px;
+      }
+    }
+  }
+}
+
+.app--content-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .app--table-component {
+    width: 800px;
+    background-color: var(--primary-color);
+    padding: 15px;
+    border-radius: var(--border-raidus-effect);
+    color: var(--tertiary-color);
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: var(--shadow-effect);
+    box-shadow: var(--shadow-effect);
+    overflow: auto;
+    max-height: 500px;
+    .app--table-component-row {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      > div {
+        text-align: center;
+        padding: 5px;
+        &:nth-child(1) {
+          flex-basis: 10%;
+        }
+        &:nth-child(2) {
+          flex-basis: calc(100% - 10% - 15%);
+        }
+        &:nth-child(3) {
+          flex-basis: 15%;
+        }
+      }
+      &.header {
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      .app--table-component-col-action {
+        display: flex;
+        button {
+          flex-basis: 48%;
+          margin: 1%;
+          min-width: inherit;
+          max-height: 35px;
+          &:nth-child(1) {
+            border-radius: var(--border-radius-effect-inverse);
+            background-color: var(--tertiary-color);
+            color: var(--primary-color);
+          }
+        }
+      }
+      input {
+        width: 90%;
+      }
+    }
+  }
+}
+
+input {
+  min-height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: 2px solid var(--tertiary-color);
+  border-radius: var(--border-radius-effect-inverse);
+  &:focus,
+  &:active,
+  &:hover,
+  &:focus-visible,
+  &:focus-within {
+    outline: none !important;
+    border-color: var(--secondary-color);
+  }
+}
+button {
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 10px;
+  border-radius: var(--border-raidus-effect);
+  color: var(--tertiary-color);
+  cursor: pointer;
+  min-width: 100px;
+  text-transform: capitalize;
+}
