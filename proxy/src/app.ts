@@ -1,7 +1,6 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
-import { endPointServiceUserHello, urlServiceUser } from "./types";
 
 const app = express();
 const port = 8000;
@@ -17,11 +16,9 @@ app.get("/api", (_, res) => {
 });
 
 app.get("/api/.user", (_, res) => {
-  axios
-    .get(`${urlServiceUser}${endPointServiceUserHello}`)
-    .then((onfulfilled) => {
-      res.send(onfulfilled.data);
-    });
+  axios.get("http://nginx/api/hello").then((onfulfilled) => {
+    res.send(onfulfilled.data);
+  });
 });
 
 app.listen(port, () => {
