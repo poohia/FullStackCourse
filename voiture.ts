@@ -4,7 +4,7 @@ class Voiture extends Vehicule {
   protected _roues: number = 4;
 
   toString() {
-    return `La voiture de la marque ${this.marque} a parcourru ${this.km_parcourru}km`;
+    return `La voiture de la marque ${this.getMarque()} a parcourru ${this.getKmParcourru()}km`;
   }
 }
 

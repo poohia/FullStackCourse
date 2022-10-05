@@ -1,22 +1,22 @@
 import Voiture from "./voiture";
 
 class Circuit {
-  private _kilometres: number;
-  private _voitures: Voiture[];
+  private kilometres: number;
+  private voitures: Voiture[];
 
-  constructor(kilometres) {
-    this._kilometres = kilometres;
+  constructor(kilometres: number) {
+    this.kilometres = kilometres;
   }
 
   depart() {
-    this._voitures.forEach((voiture) => {
+    this.voitures.forEach((voiture) => {
       voiture.demarrer();
     });
     const timer = setInterval(() => {
-      this._voitures.forEach((voiture) => {
+      this.voitures.forEach((voiture) => {
         console.log(voiture.toString());
-        const { km_parcourru } = voiture;
-        if (km_parcourru >= this._kilometres) {
+        const kmParcourru = voiture.getKmParcourru();
+        if (kmParcourru >= this.kilometres) {
           clearInterval(timer);
           this.fin(voiture);
         }
@@ -26,19 +26,19 @@ class Circuit {
 
   private fin(voiture: Voiture) {
     console.log("\n");
-    console.log(`La voiture ${voiture.marque} a gagné`);
+    console.log(`La voiture ${voiture.getMarque()} a gagné`);
   }
 
-  get kilometres(): number {
-    return this._kilometres;
+  getKilometres(): number {
+    return this.kilometres;
   }
 
-  set voitures(voitures: Voiture[]) {
-    this._voitures = voitures;
+  setVoitures(voitures: Voiture[]) {
+    this.voitures = voitures;
   }
 
-  get voitures(): Voiture[] {
-    return this._voitures;
+  getVoitures(): Voiture[] {
+    return this.voitures;
   }
 }
 
