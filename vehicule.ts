@@ -9,6 +9,7 @@ abstract class Vehicule implements VehiculeFunctionnalitee {
   private marque: string;
   private kmh: number;
   private kmParcourru: number = 0;
+  private timer: number;
 
   constructor(marque: string, kmh: number) {
     this.marque = marque;
@@ -17,10 +18,12 @@ abstract class Vehicule implements VehiculeFunctionnalitee {
 
   demarrer() {
     this.kmParcourru += this.kmh;
-    setInterval(() => (this.kmParcourru += this.kmh), 1000);
+    this.timer = setInterval(() => (this.kmParcourru += this.kmh), 1000);
   }
 
-  arreter() {}
+  arreter() {
+    clearInterval(this.timer);
+  }
 
   toString() {
     return `Le véhicule est de la marque ${this.marque}`;

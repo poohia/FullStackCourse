@@ -27,6 +27,7 @@ class Circuit {
   private fin(voiture: Voiture) {
     console.log("\n");
     console.log(`La voiture ${voiture.getMarque()} a gagné`);
+    this.voitures.forEach((voiture) => voiture.arreter());
   }
 
   getKilometres(): number {
