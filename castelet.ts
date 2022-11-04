@@ -1,11 +1,35 @@
-import Circuit from "./circuit";
-import Voiture from "./voiture";
+import { Voiture, Circuit } from "./types";
 
-const circuit = new Circuit(4500);
+const mercedes: Voiture = {
+  marque: "Mercedes",
+  km_parcourru: 0,
+  kmh: 350,
+};
 
-const mercedes = new Voiture("Mercedes", 350);
-const redbull = new Voiture("RedBull", 300);
+const redbull: Voiture = {
+  marque: "RedBull",
+  km_parcourru: 0,
+  kmh: 300,
+};
 
-circuit.setVoitures([mercedes, redbull]);
+const castelet: Circuit = {
+  kilometres: 4500,
+  voitures: [mercedes, redbull],
+};
 
-circuit.depart();
+const depart = () => {
+  const timer = setInterval(() => {
+    castelet.voitures.forEach((voiture) => {
+      voiture.km_parcourru += voiture.kmh;
+      console.log(
+        `La voiture de la marque ${voiture.marque} a parcourru ${voiture.km_parcourru}km`
+      );
+      if (voiture.km_parcourru >= castelet.kilometres) {
+        clearInterval(timer);
+        console.log(`La voiture de la marque ${voiture.marque} a gagné`);
+      }
+    });
+  });
+};
+
+depart();
