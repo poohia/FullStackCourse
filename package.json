@@ -1,0 +1,21 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.1.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "imagemin-pngquant": "^5.0.1",
+    "path": "^0.12.7",
+    "pngquant-bin": "^3.1.1"
+  }
+}

@@ -1,0 +1,18 @@
+body {
+  background-color: #74b9ff;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 100%;
+}
