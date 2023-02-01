@@ -47,11 +47,12 @@ function createWindow() {
     dialog
       .showOpenDialog(mainWindow, {
         filters: [{ name: "Images", extensions: [".png"] }],
-        properties: ["openFile"],
+        properties: ["openFile", "multiSelections"],
       })
       .then((result) => {
         accessOrCreateFolder(targetFolder).then(() => {
           result.filePaths.forEach((filePath) => {
+            const fileName = path.basename(filePath);
             // compress image
             execFile(
               // pngquant is software to compress image
@@ -59,15 +60,14 @@ function createWindow() {
               [
                 "--quality=90-100",
                 "-o",
-                `${targetFolder}/compressed.png`,
+                `${targetFolder}/${fileName}`,
                 filePath,
               ],
-              () => {
-                // open folder from path
-                shell.openPath(targetFolder);
-              }
+              () => {}
             );
           });
+          // open folder from path
+          shell.openPath(targetFolder);
         });
       });
   });
