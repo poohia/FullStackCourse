@@ -1,21 +1,31 @@
 {
-  "name": "my-electron-app",
+  "name": "compresseur-png",
   "version": "1.0.0",
-  "description": "",
+  "author": "AZOULAY JORDAN",
+  "description": "Compresseur d'image png",
   "main": "main.js",
   "scripts": {
+    "postinstall": "electron-builder install-app-deps",
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^22.1.0"
+    "electron": "^22.1.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
     "imagemin-pngquant": "^5.0.1",
     "path": "^0.12.7",
     "pngquant-bin": "^3.1.1"
+  },
+  "build": {
+    "appId": "com.electron.compresseur-png",
+    "mac": {
+      "category": "com.electron.compresseur-png.type"
+    }
   }
 }
