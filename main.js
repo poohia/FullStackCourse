@@ -58,7 +58,7 @@ function createWindow() {
     // In this example only files with extension ".png"
     dialog
       .showOpenDialog(mainWindow, {
-        filters: [{ name: "Images", extensions: [".png"] }],
+        filters: [{ name: "Images", extensions: ["png"] }],
         properties: ["openFile", "multiSelections"],
       })
       .then((result) => {
